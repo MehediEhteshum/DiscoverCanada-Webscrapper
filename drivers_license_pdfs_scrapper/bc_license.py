@@ -27,9 +27,9 @@ def bcLicense(province_name, url):
         print("fail.</br>")
         pdfLink = None
 
-    dbWrite(pdfLinks, province_name)
-    print(f"{pdfLink}</br>")
+    dbWrite(pdfLinks, province_name, "\w*-*\w*.pdf$")
+    print(f"{pdfLinks}</br>")
 
     # test purpose
     # dbWrite(
-    #     ["http://www.icbc.com/driver-licensing/Documents/driver-full.pdf"], province_name)
+    #     ["http://www.icbc.com/driver-licensing/Documents/driver-full.pdf"], province_name, "\w*-*\w*.pdf$")

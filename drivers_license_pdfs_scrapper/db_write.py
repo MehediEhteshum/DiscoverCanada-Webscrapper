@@ -2,11 +2,11 @@ from db_connect import dbCursor
 import re
 
 
-def dbWrite(pdfLinks, province_name):
+def dbWrite(pdfLinks, province_name, titleRegex):
+    print(f"</br>{province_name}.</br>")
     if len(pdfLinks) > 0:
         # make sure pdfLinks is not empty
         pdfLinks.sort()
-        titleRegex = "\w*-*\w*.pdf$"
 
         dbCursor.execute(
             f"SELECT title FROM chapter WHERE topic_id = 3 AND province_name = '{province_name}' ORDER BY title ASC;")
