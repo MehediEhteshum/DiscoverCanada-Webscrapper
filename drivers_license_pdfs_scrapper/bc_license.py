@@ -1,6 +1,6 @@
-import requests
-from bs4 import BeautifulSoup
 from db_write import dbWrite
+from bs4 import BeautifulSoup
+import requests
 
 
 def bcLicense(province_name, url):
@@ -27,9 +27,9 @@ def bcLicense(province_name, url):
         print("fail.</br>")
         pdfLink = None
 
-    dbWrite(pdfLinks, province_name, "\w*-*\w*.pdf$")
-    print(f"{pdfLinks}</br>")
+    dbWrite(pdfLinks, province_name, "[\w+\-*]+.pdf")
+    print(f"{pdfLinks}</br></br>")
 
     # test purpose
     # dbWrite(
-    #     ["http://www.icbc.com/driver-licensing/Documents/driver-full.pdf"], province_name, "\w*-*\w*.pdf$")
+    #     ["http://www.icbc.com/driver-licensing/Documents/driver-full.pdf"], province_name, "[\w+\-*]+.pdf")

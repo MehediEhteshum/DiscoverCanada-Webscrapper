@@ -3,13 +3,13 @@ import re
 
 
 def dbWrite(pdfLinks, province_name, titleRegex):
-    print(f"</br>{province_name}.</br>")
+    print(f"{province_name}.</br>")
     if len(pdfLinks) > 0:
         # make sure pdfLinks is not empty
         pdfLinks.sort()
 
         dbCursor.execute(
-            f"SELECT title FROM chapter WHERE topic_id = 3 AND province_name = '{province_name}' ORDER BY title ASC;")
+            f"SELECT title FROM chapter WHERE topic_id = 3 AND province_name = '{province_name}' ORDER BY pdf_url ASC;")
         titles = dbCursor.fetchall()
         rowCount = len(titles)
 
