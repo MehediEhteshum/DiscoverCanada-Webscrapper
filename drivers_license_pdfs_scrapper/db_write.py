@@ -19,7 +19,8 @@ def dbWrite(pdfLinks, province_name, titleRegex):
             print("same number of entries.</br>")
             for i in range(rowCount):
                 # pdf title. finally capitalize first letter of each word using title() and remove '.pdf' by [0:-4]
-                newTitle = re.findall(titleRegex, pdfLinks[i])[0][0:-4].title()
+                newTitle = re.findall(titleRegex, pdfLinks[i])[
+                    0][0:-4].title().replace("-", " ")
                 oldTitle = titles[i][0]
                 dbCursor.execute(
                     f"UPDATE chapter SET title = '{newTitle}', pdf_url = '{pdfLinks[i]}' WHERE topic_id = 3 AND province_name = '{province_name}' AND title = '{oldTitle}';")
@@ -29,14 +30,16 @@ def dbWrite(pdfLinks, province_name, titleRegex):
             print("more number of entries than before.</br>")
             for i in range(rowCount):
                 # pdf title. finally capitalize first letter of each word using title() and remove '.pdf' by [0:-4]
-                newTitle = re.findall(titleRegex, pdfLinks[i])[0][0:-4].title()
+                newTitle = re.findall(titleRegex, pdfLinks[i])[
+                    0][0:-4].title().replace("-", " ")
                 oldTitle = titles[i][0]
                 dbCursor.execute(
                     f"UPDATE chapter SET title = '{newTitle}', pdf_url = '{pdfLinks[i]}' WHERE topic_id = 3 AND province_name = '{province_name}' AND title = '{oldTitle}';")
                 print(f"update rowCount rows {i}.</br>")
             for i in range(diffCount):
                 # pdf title. finally capitalize first letter of each word using title() and remove '.pdf' by [0:-4]
-                newTitle = re.findall(titleRegex, pdfLinks[i])[0][0:-4].title()
+                newTitle = re.findall(titleRegex, pdfLinks[i])[
+                    0][0:-4].title().replace("-", " ")
                 dbCursor.execute(
                     f"INSERT INTO chapter (topic_id, province_name, title, pdf_url) VALUES (3, '{province_name}', '{newTitle}', '{pdfLinks[i+rowCount]}');")
                 print(f"insert rest {i}.</br>")
@@ -48,7 +51,8 @@ def dbWrite(pdfLinks, province_name, titleRegex):
             print("negative. drop all existing rows.</br>")
             for i in range(len(pdfLinks)):
                 # pdf title. finally capitalize first letter of each word using title() and remove '.pdf' by [0:-4]
-                newTitle = re.findall(titleRegex, pdfLinks[i])[0][0:-4].title()
+                newTitle = re.findall(titleRegex, pdfLinks[i])[
+                    0][0:-4].title().replace("-", " ")
                 dbCursor.execute(
                     f"INSERT INTO chapter (topic_id, province_name, title, pdf_url) VALUES (3, '{province_name}', '{newTitle}', '{pdfLinks[i]}');")
                 print(f"then insert new row {i}.</br>")
