@@ -1,5 +1,6 @@
-from db_connect import dbCursor
 import re
+
+from db_connect import dbCursor
 
 
 def dbWrite(pdfLinks, province_name, titleRegex):

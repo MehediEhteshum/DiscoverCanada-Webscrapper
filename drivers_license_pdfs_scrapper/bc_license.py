@@ -1,6 +1,7 @@
-from db_write import dbWrite
 from bs4 import BeautifulSoup
 import requests
+
+from db_write import dbWrite
 
 
 def bcLicense(province_name, url):

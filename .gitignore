@@ -1,2 +1,2 @@
 .vscode
-drivers_license_pdfs_scrapper/db_connect.py
+drivers_license_pdfs_scrapper/env.py
