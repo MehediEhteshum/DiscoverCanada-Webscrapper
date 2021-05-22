@@ -7,7 +7,7 @@ from db_write import dbWrite, link_types
 def bcLicense(province_name, url):
     pdfLinksDict = {}  # {"pdfTitle": "pdfLink"}
     try:
-        print("scraping.</br>")
+        print("</br></br>scraping.</br>")
         htmlResponse = requests.get(url).text
         soup = BeautifulSoup(htmlResponse, "lxml")
         anchorTags = soup.find(
@@ -16,9 +16,10 @@ def bcLicense(province_name, url):
             for tag in anchorTags:
                 link = tag["href"]
                 if ".pdf" in link:
-                    pdfTitle = tag.text
+                    pdfTitle = soup.find(
+                        "div", id="ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField").find("h1").text.replace("\u200b", "")
                     pdfLink = link
-                    pdfLinksDict = [pdfLink]
+                    pdfLinksDict[pdfTitle] = pdfLink
                     break
                 else:
                     pdfLink = None
@@ -29,8 +30,8 @@ def bcLicense(province_name, url):
         print("fail.</br>")
         pdfLink = None
 
-    dbWrite(pdfLinksDict, province_name, "[\w+\-*]+.pdf")
     print(f"{pdfLinksDict}</br></br>")
+    dbWrite(pdfLinksDict, province_name, link_types[0])
 
     # test purpose
     # dbWrite(

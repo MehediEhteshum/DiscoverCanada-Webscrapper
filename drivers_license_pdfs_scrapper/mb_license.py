@@ -8,7 +8,7 @@ def mbLicense(province_name, url):
     pdfLinksDict = {}  # {"pdfTitle": "pdfLink"}
     webLinksDict = {}  # {"webTitle": "webLink"}
     try:
-        print("scraping.</br>")
+        print("</br>scraping.</br>")
         htmlResponse = requests.get(url).text
         soup = BeautifulSoup(htmlResponse, "lxml")
         anchorTags = soup.find(
@@ -29,7 +29,7 @@ def mbLicense(province_name, url):
         print("fail.</br>")
         pdfLink = None
 
-    dbWrite(pdfLinksDict, province_name, link_types[0])
-    dbWrite(webLinksDict, province_name, link_types[1])
     print(f"{pdfLinksDict}</br>")
     print(f"{webLinksDict}</br></br>")
+    dbWrite(pdfLinksDict, province_name, link_types[0])
+    dbWrite(webLinksDict, province_name, link_types[1])

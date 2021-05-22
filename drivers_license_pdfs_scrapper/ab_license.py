@@ -7,7 +7,7 @@ from db_write import dbWrite, link_types
 def abLicense(province_name, url):
     pdfLinksDict = {}  # {"pdfTitle": "pdfLink"}
     try:
-        print("scraping.</br>")
+        print("</br>scraping.</br>")
         htmlResponse = requests.get(url).text
         soup = BeautifulSoup(htmlResponse, "lxml")
         anchorTags = soup.find("div", id="goa-grid25734").findAll("a")
@@ -25,8 +25,8 @@ def abLicense(province_name, url):
         print("fail.</br>")
         pdfLink = None
 
-    dbWrite(pdfLinksDict, province_name, link_types[0])
     print(f"{pdfLinksDict}</br></br>")
+    dbWrite(pdfLinksDict, province_name, link_types[0])
 
     # test purpose
     # dbWrite(
