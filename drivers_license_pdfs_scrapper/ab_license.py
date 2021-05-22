@@ -1,11 +1,11 @@
 from bs4 import BeautifulSoup
 import requests
 
-from db_write import dbWrite
+from db_write import dbWrite, link_types
 
 
 def abLicense(province_name, url):
-    pdfLinks = []
+    pdfLinksDict = {}  # {"pdfTitle": "pdfLink"}
     try:
         print("scraping.</br>")
         htmlResponse = requests.get(url).text
@@ -16,15 +16,17 @@ def abLicense(province_name, url):
                 aTagUrl = aTag["href"]
                 res = requests.get(aTagUrl).text
                 resSoup = BeautifulSoup(res, "lxml")
-                pdfLink = resSoup.find(
-                    "section", id="dataset-resources").find("a")["href"]
-                pdfLinks.append(pdfLink)
+                aTagPdf = resSoup.find(
+                    "section", id="dataset-resources").find("a")
+                pdfTitle = aTagPdf["title"]
+                pdfLink = aTagPdf["href"]
+                pdfLinksDict[pdfTitle] = pdfLink
     except:
         print("fail.</br>")
         pdfLink = None
 
-    dbWrite(pdfLinks, province_name, "[\w+\-*]+.pdf")
-    print(f"{pdfLinks}</br></br>")
+    dbWrite(pdfLinksDict, province_name, link_types[0])
+    print(f"{pdfLinksDict}</br></br>")
 
     # test purpose
     # dbWrite(
