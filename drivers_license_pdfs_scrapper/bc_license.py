@@ -1,11 +1,11 @@
 from bs4 import BeautifulSoup
 import requests
 
-from db_write import dbWrite
+from db_write import dbWrite, link_types
 
 
 def bcLicense(province_name, url):
-    pdfLinks = []
+    pdfLinksDict = {}  # {"pdfTitle": "pdfLink"}
     try:
         print("scraping.</br>")
         htmlResponse = requests.get(url).text
@@ -16,8 +16,9 @@ def bcLicense(province_name, url):
             for tag in anchorTags:
                 link = tag["href"]
                 if ".pdf" in link:
+                    pdfTitle = tag.text
                     pdfLink = link
-                    pdfLinks = [pdfLink]
+                    pdfLinksDict = [pdfLink]
                     break
                 else:
                     pdfLink = None
@@ -28,8 +29,8 @@ def bcLicense(province_name, url):
         print("fail.</br>")
         pdfLink = None
 
-    dbWrite(pdfLinks, province_name, "[\w+\-*]+.pdf")
-    print(f"{pdfLinks}</br></br>")
+    dbWrite(pdfLinksDict, province_name, "[\w+\-*]+.pdf")
+    print(f"{pdfLinksDict}</br></br>")
 
     # test purpose
     # dbWrite(
