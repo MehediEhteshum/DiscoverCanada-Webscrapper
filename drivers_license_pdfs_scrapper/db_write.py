@@ -11,14 +11,14 @@ def dbWrite(LinksDict, province_name, link_type):
         elif link_type == link_types[1]:
             url_type = "web_url"
         if len(LinksDict) > 0:
-            # make sure pdfLinks is not empty. then sort it by its values
+            # make sure pdfLinks is not empty. then sort it by its keys i.e. titles
             LinksDict = dict(
-                sorted(LinksDict.items(), key=lambda item: item[1]))
+                sorted(LinksDict.items(), key=lambda item: item[0]))
         newTitles = list(LinksDict.keys())
         newLinks = list(LinksDict.values())
 
         dbCursor.execute(
-            f"SELECT title FROM chapter WHERE topic_id = %s AND province_name = %s AND {url_type} IS NOT NULL ORDER BY {url_type} ASC;", (3, province_name))
+            f"SELECT title FROM chapter WHERE topic_id = %s AND province_name = %s AND {url_type} IS NOT NULL ORDER BY title ASC;", (3, province_name))
         oldTitles = dbCursor.fetchall()
         rowCount = len(oldTitles)
 
