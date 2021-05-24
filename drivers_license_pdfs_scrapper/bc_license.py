@@ -2,13 +2,14 @@ from bs4 import BeautifulSoup
 import requests
 
 from db_write import dbWrite, link_types
+from base import headers
 
 
 def bcLicense(province_name, url):
     pdfLinksDict = {}  # {"pdfTitle": "pdfLink"}
     try:
         print("</br></br>scraping.</br>")
-        htmlResponse = requests.get(url).text
+        htmlResponse = requests.get(url, headers=headers).text
         soup = BeautifulSoup(htmlResponse, "lxml")
         anchorTags = soup.find(
             "div", class_="ms-rte-embedcode ms-rte-embedwp").find_all("a", class_="ext-noicon")

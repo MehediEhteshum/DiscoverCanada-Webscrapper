@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 from db_write import dbWrite, link_types
+from base import headers
 
 
 def mbLicense(province_name, url):
@@ -9,7 +10,7 @@ def mbLicense(province_name, url):
     webLinksDict = {}  # {"webTitle": "webLink"}
     try:
         print("</br>scraping.</br>")
-        htmlResponse = requests.get(url).text
+        htmlResponse = requests.get(url, headers=headers).text
         soup = BeautifulSoup(htmlResponse, "lxml")
         anchorTags = soup.find(
             "div", class_="column2 story-content multilingual").find_all("a")

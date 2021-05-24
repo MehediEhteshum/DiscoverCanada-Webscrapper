@@ -1,13 +1,15 @@
-from db_write import dbWrite, link_types
 import requests
 from bs4 import BeautifulSoup
+
+from db_write import dbWrite, link_types
+from base import headers
 
 
 def nbLicense(province_name, url):
     pdfLinksDict = {}  # {"pdfTitle": "pdfLink"}
     try:
         print("</br>scraping.</br>")
-        htmlResponse = requests.get(url).text
+        htmlResponse = requests.get(url, headers=headers).text
         soup = BeautifulSoup(htmlResponse, "lxml")
         anchorTags = soup.find(
             "div", class_="gnblist_update list parbase section").find_all("a")
