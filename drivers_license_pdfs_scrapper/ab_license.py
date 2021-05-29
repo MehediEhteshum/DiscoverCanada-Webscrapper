@@ -15,7 +15,7 @@ def abLicense(province_name, url):
         if len(anchorTags) > 0:
             for aTag in anchorTags:
                 aTagUrl = aTag["href"]
-                res = requests.get(aTagUrl).text
+                res = requests.get(aTagUrl, headers=headers).text
                 resSoup = BeautifulSoup(res, "lxml")
                 aTagPdf = resSoup.find(
                     "section", id="dataset-resources").find("a")
