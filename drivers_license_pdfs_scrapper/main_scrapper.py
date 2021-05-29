@@ -22,7 +22,8 @@ print("Content-Type: text/html\n")
 # nbLicense("New Brunswick", urls["New Brunswick"])
 # nlLicense("Newfoundland and Labrador", urls["Newfoundland and Labrador"])
 # nsLicense("Nova Scotia", urls["Nova Scotia"])
-onLicense("Ontario", urls["Ontario"])
+# onLicense("Ontario", urls["Ontario"])
+peiLicense("Prince Edward Island", urls["Prince Edward Island"])
 
 # test purpose
 # m = re.findall("[\w+\-*]+.pdf", "https://open.alberta.ca/dataset/485a5480-45b7-4416-a06f-38ab2191a9fd/resource/cd3aa450-04ef-4729-b0e9-81e387514ae2/download/trans-commercial-drivers-guide-trucks-buses-emergency-responders-taxis-2020-07.pdf")

@@ -5,5 +5,6 @@ urls = {
     "New Brunswick": "https://www2.gnb.ca/content/gnb/en/departments/public-safety/community_safety/content/drivers_vehicles/content/new_brunswick_drivers_handbook.html",
     "Newfoundland and Labrador": "https://www.gov.nl.ca/dgsnl/drivers/driversandvehicles/driverlicensing/",
     "Nova Scotia": "https://novascotia.ca/sns/rmv/licence/",
-    "Ontario": "https://www.ontario.ca/document/official-mto-drivers-handbook"
+    "Ontario": "https://www.ontario.ca/document/official-mto-drivers-handbook",
+    "Prince Edward Island": ""
 }
