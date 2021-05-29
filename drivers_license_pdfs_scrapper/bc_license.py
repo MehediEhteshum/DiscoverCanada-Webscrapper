@@ -29,7 +29,7 @@ def bcLicense(province_name, url):
             pdfLink = None
     except:
         print("fail.</br>")
-        pdfLink = None
+        pdfLinksDict = None
 
     print(f"{pdfLinksDict}</br></br>")
     dbWrite(pdfLinksDict, province_name, link_types[0])

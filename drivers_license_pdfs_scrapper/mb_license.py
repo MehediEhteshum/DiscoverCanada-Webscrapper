@@ -28,7 +28,8 @@ def mbLicense(province_name, url):
                     webLinksDict[webTitle] = webLink
     except:
         print("fail.</br>")
-        pdfLink = None
+        pdfLinksDict = None
+        webLinksDict = None
 
     print(f"{pdfLinksDict}</br>")
     print(f"{webLinksDict}</br></br>")

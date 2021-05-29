@@ -24,7 +24,7 @@ def abLicense(province_name, url):
                 pdfLinksDict[pdfTitle] = pdfLink
     except:
         print("fail.</br>")
-        pdfLink = None
+        pdfLinksDict = None
 
     print(f"{pdfLinksDict}</br></br>")
     dbWrite(pdfLinksDict, province_name, link_types[0])
