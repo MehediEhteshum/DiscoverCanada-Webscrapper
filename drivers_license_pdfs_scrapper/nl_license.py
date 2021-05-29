@@ -12,7 +12,17 @@ def nlLicense(province_name, url):
         htmlResponse = requests.get(url, headers=headers).text
         soup = BeautifulSoup(htmlResponse, "lxml")
         anchorTags = soup.find(
-            "article")
+            "article", id="post-1402").find("ul").find_all("a", rel="noopener noreferrer")
+        if len(anchorTags) > 0:
+            for aTag in anchorTags:
+                link = aTag["href"]
+                if ".pdf" in link:
+                    pdfTitle = aTag.text + " NL"
+                    pdfLink = link
+                    pdfLinksDict[pdfTitle] = pdfLink
     except:
         print("fail.</br>")
         pdfLink = None
+
+    print(f"{pdfLinksDict}</br></br>")
+    dbWrite(pdfLinksDict, province_name, link_types[0])
