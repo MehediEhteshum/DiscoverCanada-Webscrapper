@@ -6,5 +6,6 @@ urls = {
     "Newfoundland and Labrador": "https://www.gov.nl.ca/dgsnl/drivers/driversandvehicles/driverlicensing/",
     "Nova Scotia": "https://novascotia.ca/sns/rmv/licence/",
     "Ontario": "https://www.ontario.ca/document/official-mto-drivers-handbook",
-    "Prince Edward Island": "https://www.princeedwardisland.ca/en/publication/drivers-handbook"
+    "Prince Edward Island": "https://www.princeedwardisland.ca/en/publication/drivers-handbook",
+    "Quebec": "https://saaq.gouv.qc.ca/en/drivers-licences/"
 }

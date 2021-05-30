@@ -1,11 +1,11 @@
 from db_write import dbWrite, link_types
 
 
-def onLicense(province_name, url):
+def qcLicense(province_name, url):
     webLinksDict = {}  # {"webTitle": "webLink"}
     try:
         print("</br>scraping.</br>")
-        webTitle = "The Official Ministry of Transportation (MTO) Driver’s Handbook"
+        webTitle = "DRIVER'S LICENCES".capitalize()
         webLink = url
         webLinksDict[webTitle] = webLink
     except:
