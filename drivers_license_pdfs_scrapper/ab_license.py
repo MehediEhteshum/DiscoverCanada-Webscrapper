@@ -19,12 +19,11 @@ def abLicense(province_name, url):
                 resSoup = BeautifulSoup(res, "lxml")
                 aTagPdf = resSoup.find(
                     "section", id="dataset-resources").find("a")
-                pdfTitle = aTagPdf["title"]
+                pdfTitle = aTagPdf["title"].capitalize()
                 pdfLink = aTagPdf["href"]
                 pdfLinksDict[pdfTitle] = pdfLink
     except:
         print("fail.</br>")
-        pdfLinksDict = None
 
     print(f"{pdfLinksDict}</br></br>")
     dbWrite(pdfLinksDict, province_name, link_types[0])

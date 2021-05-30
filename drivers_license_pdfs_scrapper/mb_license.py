@@ -19,7 +19,7 @@ def mbLicense(province_name, url):
             for aTag in anchorTags:
                 aTagId = anchorTags.index(aTag)
                 if aTagId in reqIndices:
-                    pdfTitle = aTag.text
+                    pdfTitle = aTag.text.capitalize()
                     pdfLink = aTag["href"]
                     pdfLinksDict[pdfTitle] = pdfLink
                 if aTagId == 2:
@@ -28,8 +28,6 @@ def mbLicense(province_name, url):
                     webLinksDict[webTitle] = webLink
     except:
         print("fail.</br>")
-        pdfLinksDict = None
-        webLinksDict = None
 
     print(f"{pdfLinksDict}</br>")
     print(f"{webLinksDict}</br></br>")

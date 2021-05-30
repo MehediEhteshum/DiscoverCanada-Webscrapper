@@ -18,7 +18,7 @@ def bcLicense(province_name, url):
                 link = tag["href"]
                 if ".pdf" in link:
                     pdfTitle = soup.find(
-                        "div", id="ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField").find("h1").text.replace("\u200b", "")
+                        "div", id="ctl00_PlaceHolderMain_PageContent__ControlWrapper_RichHtmlField").find("h1").text.replace("\u200b", "").capitalize()
                     pdfLink = link
                     pdfLinksDict[pdfTitle] = pdfLink
                     break
@@ -29,7 +29,6 @@ def bcLicense(province_name, url):
             pdfLink = None
     except:
         print("fail.</br>")
-        pdfLinksDict = None
 
     print(f"{pdfLinksDict}</br></br>")
     dbWrite(pdfLinksDict, province_name, link_types[0])

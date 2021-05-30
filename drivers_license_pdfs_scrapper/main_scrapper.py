@@ -12,17 +12,18 @@ from nb_license import nbLicense
 from nl_license import nlLicense
 from ns_license import nsLicense
 from on_license import onLicense
+from pei_license import peiLicense
 
 # this line is important to run the script on localhost
 print("Content-Type: text/html\n")
 
-# abLicense("Alberta", urls["Alberta"])
-# bcLicense("British Columbia", urls["British Columbia"])
-# mbLicense("Manitoba", urls["Manitoba"])
-# nbLicense("New Brunswick", urls["New Brunswick"])
-# nlLicense("Newfoundland and Labrador", urls["Newfoundland and Labrador"])
-# nsLicense("Nova Scotia", urls["Nova Scotia"])
-# onLicense("Ontario", urls["Ontario"])
+abLicense("Alberta", urls["Alberta"])
+bcLicense("British Columbia", urls["British Columbia"])
+mbLicense("Manitoba", urls["Manitoba"])
+nbLicense("New Brunswick", urls["New Brunswick"])
+nlLicense("Newfoundland and Labrador", urls["Newfoundland and Labrador"])
+nsLicense("Nova Scotia", urls["Nova Scotia"])
+onLicense("Ontario", urls["Ontario"])
 peiLicense("Prince Edward Island", urls["Prince Edward Island"])
 
 # test purpose

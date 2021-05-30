@@ -17,12 +17,11 @@ def nlLicense(province_name, url):
             for aTag in anchorTags:
                 link = aTag["href"]
                 if ".pdf" in link:
-                    pdfTitle = aTag.text + " NL"
+                    pdfTitle = (aTag.text + " NL").capitalize()
                     pdfLink = link
                     pdfLinksDict[pdfTitle] = pdfLink
     except:
         print("fail.</br>")
-        pdfLinksDict = None
 
     print(f"{pdfLinksDict}</br></br>")
     dbWrite(pdfLinksDict, province_name, link_types[0])

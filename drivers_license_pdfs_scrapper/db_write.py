@@ -5,7 +5,7 @@ link_types = ["pdf", "web"]
 
 def dbWrite(LinksDict, province_name, link_type):
     try:
-        print(f"{province_name}.</br>")
+        print(f"{province_name}: {link_type}.</br>")
         if link_type == link_types[0]:
             url_type = "pdf_url"
         elif link_type == link_types[1]:
@@ -27,8 +27,8 @@ def dbWrite(LinksDict, province_name, link_type):
             # same number of entries. update
             print("same number of entries.</br>")
             for i in range(rowCount):
-                # title. capitalize first letter using capitalize()
-                newTitle = newTitles[i].capitalize()
+                # title
+                newTitle = newTitles[i]
                 oldTitle = oldTitles[i][0]
                 dbCursor.execute(
                     f"UPDATE chapter SET title = %s, {url_type} = %s WHERE topic_id = %s AND province_name = %s AND title = %s AND {url_type} IS NOT NULL;", (newTitle, newLinks[i], 3, province_name, oldTitle))
@@ -37,15 +37,15 @@ def dbWrite(LinksDict, province_name, link_type):
             # more number of entries than before. update rowCount rows and insert rest
             print("more number of entries than before.</br>")
             for i in range(rowCount):
-                # title. capitalize first letter using capitalize()
-                newTitle = newTitles[i].capitalize()
+                # title
+                newTitle = newTitles[i]
                 oldTitle = oldTitles[i][0]
                 dbCursor.execute(
                     f"UPDATE chapter SET title = %s, {url_type} = %s WHERE topic_id = %s AND province_name = %s AND title = %s AND {url_type} IS NOT NULL;", (newTitle, newLinks[i], 3, province_name, oldTitle))
                 print(f"update rowCount rows {i}.</br>")
             for i in range(diffCount):
-                # title. capitalize first letter using capitalize()
-                newTitle = newTitles[rowCount + i].capitalize()
+                # title.
+                newTitle = newTitles[rowCount + i]
                 dbCursor.execute(
                     f"INSERT INTO chapter (topic_id, province_name, title, {url_type}) VALUES (%s, %s, %s, %s)", (3, province_name, newTitle, newLinks[rowCount + i]))
                 print(f"insert rest {rowCount + i}.</br>")
@@ -56,8 +56,8 @@ def dbWrite(LinksDict, province_name, link_type):
                 f"DELETE FROM chapter WHERE topic_id = %s AND province_name = %s AND {url_type} IS NOT NULL;", (3, province_name))
             print("negative. drop all existing rows.</br>")
             for i in range(len(LinksDict)):
-                # title. capitalize first letter using capitalize()
-                newTitle = newTitles[i].capitalize()
+                # title.
+                newTitle = newTitles[i]
                 dbCursor.execute(
                     f"INSERT INTO chapter (topic_id, province_name, title, {url_type}) VALUES (%s, %s, %s, %s);", (3, province_name, newTitle, newLinks[i]))
                 print(f"then insert new row {i}.</br>")

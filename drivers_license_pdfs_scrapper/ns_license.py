@@ -27,10 +27,10 @@ def nsLicense(province_name, url):
                             aTagPdfId = aTagsPdf.index(aTagPdf)
                             if aTagPdfId in [0, len(aTagsPdf) - 1]:
                                 chapterId = (aTagPdfId + 1) % len(aTagsPdf)
-                                pdfTitle = str(chapterId) + " " + \
-                                    aTagPdf.text + " NS"
+                                pdfTitle = (str(chapterId) + " " +
+                                            aTagPdf.text + " NS").capitalize()
                             else:
-                                pdfTitle = aTagPdf.text + " NS"
+                                pdfTitle = (aTagPdf.text + " NS").capitalize()
                             pdfLink = "https://novascotia.ca" + aTagPdf["href"]
                             pdfLinksDict[pdfTitle] = pdfLink
                 if aTagId == 5:
@@ -39,13 +39,12 @@ def nsLicense(province_name, url):
                     resSoup = BeautifulSoup(res, "lxml")
                     aTagPdf = resSoup.find(
                         "table", class_="innertable").find_all("a")[0]
-                    pdfTitle = aTagPdf.text
+                    pdfTitle = aTagPdf.text.capitalize()
                     pdfLink = "https://novascotia.ca/sns/rmv/licence/" + \
                         aTagPdf["href"]
                     pdfLinksDict[pdfTitle] = pdfLink
     except:
         print("fail.</br>")
-        pdfLinksDict = None
 
     print(f"{pdfLinksDict}</br></br>")
     dbWrite(pdfLinksDict, province_name, link_types[0])

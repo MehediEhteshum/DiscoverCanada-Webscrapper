@@ -14,7 +14,6 @@ def onLicense(province_name, url):
         webLinksDict[webTitle] = webLink
     except:
         print("fail.</br>")
-        webLinksDict = None
 
     print(f"{webLinksDict}</br></br>")
     dbWrite(webLinksDict, province_name, link_types[1])

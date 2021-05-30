@@ -17,14 +17,13 @@ def nbLicense(province_name, url):
             for aTag in anchorTags:
                 aTagId = anchorTags.index(aTag)
                 if aTagId in [0, 1]:
-                    pdfTitle = str(aTagId) + " " + aTag.text
+                    pdfTitle = (str(aTagId) + " " + aTag.text).capitalize()
                 else:
-                    pdfTitle = aTag.text
+                    pdfTitle = aTag.text.capitalize()
                 pdfLink = "https://www2.gnb.ca/" + aTag["href"]
                 pdfLinksDict[pdfTitle] = pdfLink
     except:
         print("fail.</br>")
-        pdfLinksDict = None
 
     print(f"{pdfLinksDict}</br></br>")
     dbWrite(pdfLinksDict, province_name, link_types[0])
