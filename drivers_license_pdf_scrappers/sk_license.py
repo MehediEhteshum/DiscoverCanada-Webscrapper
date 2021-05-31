@@ -12,4 +12,4 @@ def skLicense(province_name, url):
         print("fail.</br>")
 
     print(f"{webLinksDict}</br></br>")
-    dbWrite(webLinksDict, province_name, link_types[1])
+    dbWrite(webLinksDict, province_name, 3, link_types[1])

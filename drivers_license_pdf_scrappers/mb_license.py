@@ -31,5 +31,5 @@ def mbLicense(province_name, url):
 
     print(f"{pdfLinksDict}</br>")
     print(f"{webLinksDict}</br></br>")
-    dbWrite(pdfLinksDict, province_name, link_types[0])
-    dbWrite(webLinksDict, province_name, link_types[1])
+    dbWrite(pdfLinksDict, province_name, 3, link_types[0])
+    dbWrite(webLinksDict, province_name, 3, link_types[1])

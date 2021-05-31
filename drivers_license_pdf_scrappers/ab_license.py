@@ -26,7 +26,7 @@ def abLicense(province_name, url):
         print("fail.</br>")
 
     print(f"{pdfLinksDict}</br></br>")
-    dbWrite(pdfLinksDict, province_name, link_types[0])
+    dbWrite(pdfLinksDict, province_name, 3, link_types[0])
 
     # test purpose
     # dbWrite(
