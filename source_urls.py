@@ -8,5 +8,6 @@ urls = {
     "Ontario": "https://www.ontario.ca/document/official-mto-drivers-handbook",
     "Prince Edward Island": "https://www.princeedwardisland.ca/en/publication/drivers-handbook",
     "Quebec": "https://saaq.gouv.qc.ca/en/drivers-licences/",
-    "Saskatchewan": "https://www.sgi.sk.ca/licensing"
+    "Saskatchewan": "https://www.sgi.sk.ca/licensing",
+    "PR": "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada.html"
 }

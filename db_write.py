@@ -17,8 +17,12 @@ def dbWrite(LinksDict, province_name, topic_id, link_type):
         newTitles = list(LinksDict.keys())
         newLinks = list(LinksDict.values())
 
-        dbCursor.execute(
-            f"SELECT title FROM chapter WHERE topic_id = %s AND province_name = %s AND {url_type} IS NOT NULL ORDER BY title ASC;", (topic_id, province_name))
+        if province_name == None:
+            dbCursor.execute(
+                f"SELECT title FROM chapter WHERE topic_id = %s AND {url_type} IS NOT NULL ORDER BY title ASC;", (topic_id))
+        else:
+            dbCursor.execute(
+                f"SELECT title FROM chapter WHERE topic_id = %s AND province_name = %s AND {url_type} IS NOT NULL ORDER BY title ASC;", (topic_id, province_name))
         oldTitles = dbCursor.fetchall()
         rowCount = len(oldTitles)
 
