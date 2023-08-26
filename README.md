@@ -1,1 +1,1 @@
-# Discover Canada App - Webscrapper (TO BE UPDATED)
+# Discover Canada App - Webscrapper (README TO BE UPDATED) 
